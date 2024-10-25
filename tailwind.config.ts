@@ -9,23 +9,6 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/components/(button|ripple|spinner).js",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: "20px",
-        lg: "80px",
-      },
-      screens: {
-        sm: "375px",
-        md: "768px",
-        lg: "1200px",
-      },
-    },
-    screens: {
-      sm: "375px",
-      md: "768px",
-      lg: "1200px",
-    },
     extend: {},
   },
   plugins: [nextui()],
