@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-xl font-semibold">
-              E-<span>Shop</span>
+              P-<span>Shop</span>
             </h2>
           </div>
           <div className="hidden lg:flex">
@@ -76,7 +76,7 @@ const Navbar = () => {
       {/* mobile */}
 
       <div
-        className={`bg-[#2626263d] duration-1000 fixed inset-0 top-0 lg:hidden ${
+        className={`bg-[#2626263d] duration-1000 fixed z-[999] inset-0 top-0 lg:hidden ${
           menu ? "" : "hidden"
         }`}
       >
