@@ -1,3 +1,4 @@
+import Footer from "../component/Sharable/Footer";
 import Navbar from "../component/Sharable/Navbar";
 
 export default function AboutLayout({
@@ -9,6 +10,7 @@ export default function AboutLayout({
     <div className="">
       <Navbar></Navbar>
       <main>{children}</main>
+      <Footer></Footer>
     </div>
   );
 }

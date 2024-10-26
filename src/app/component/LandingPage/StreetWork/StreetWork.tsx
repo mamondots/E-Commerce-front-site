@@ -5,42 +5,38 @@ import BodyImg from "@/assets/images/body-bg.jpg";
 import { MdOutlineMaximize } from "react-icons/md";
 import { products } from "../../../../../public/Products";
 
-import PersonalInfo from "../PersonalInfo/PersonalInfo";
 import ProductCard from "../../Products/ProductCard/ProductCard";
 import "swiper/css";
 import { SwiperSlide, Swiper } from "swiper/react";
-import ShortInfo from "../ShortInfo/ShortInfo";
-const InkWork = () => {
+import HurryUp from "../HurryUp/HurryUp";
+
+const StreetWork = () => {
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: `url(${BodyImg.src})`,
+      }}
+    >
       <div
-        className="w-full py-20 mt-[-50px] lg:px-20 md:px-16 sm:px-12 px-10"
+        className=" py-8 rotate-180"
         style={{
           backgroundImage: `url(${bgImg.src})`,
         }}
-      >
-        <div className="mt-12">
-          <PersonalInfo></PersonalInfo>
-        </div>
-      </div>
-      <div
-        className="border-t border-[#262626]/15 py-20 -z-30"
-        style={{
-          backgroundImage: `url(${BodyImg.src})`,
-        }}
-      >
+      ></div>
+
+      <div className="py-20">
         <div className="lg:px-20 md:px-16 sm:px-12 px-10">
           {/* Head title start */}
           <div className="flex lg:flex-row flex-col lg:items-center justify-between gap-2">
             <div className="flex lg:flex-row md:flex-row flex-col  lg:items-center lg:justify-center lg:gap-3">
               <h2 className="lg:text-4xl md:text-4xl text-2xl font-bold">
-                Ink work
+                Street 2024
               </h2>
               <p className=" text-[#F57D4C] lg:text-4xl lg:mt-6 md:mt-6 font-extrabold">
                 <MdOutlineMaximize />
               </p>
               <p className="text-lg font-semibold text-[#262626]/60">
-                Enjoy the visual
+                Colorful serenity
               </p>
             </div>
             <div>
@@ -51,6 +47,7 @@ const InkWork = () => {
           </div>
           {/* Head title end */}
         </div>
+
         <div className="mt-12 lg:ml-[78px] lg:px-0 px-8">
           <Swiper
             slidesPerView={4}
@@ -84,12 +81,12 @@ const InkWork = () => {
             )}
           </Swiper>
         </div>
-        <div className="lg:mt-24 mt-12 lg:px-28 md:px-16 sm:px-12 px-10">
-          <ShortInfo></ShortInfo>
-        </div>
+      </div>
+      <div className="lg:mt-16 mt-12 lg:px-28 md:px-16 sm:px-12 px-10 pb-12">
+        <HurryUp></HurryUp>
       </div>
     </div>
   );
 };
 
-export default InkWork;
+export default StreetWork;

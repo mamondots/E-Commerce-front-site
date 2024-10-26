@@ -14,19 +14,19 @@ const ArtGallary = () => {
   };
   return (
     <div
-      className="py-12 mt-[-45px] lg:px-20 md:px-16 sm:px-12 px-10"
+      className="py-12 mt-[-45px] lg:px-20 md:px-16 sm:px-12 px-4"
       style={{
         backgroundImage: `url(${bgImg.src})`,
       }}
     >
       <div className="mt-28">
         <div className="grid lg:grid-cols-2 items-center gap-8">
-          <div className="flex flex-col gap-6 text-5xl font-semibold  cursor-pointer">
+          <div className="flex lg:flex-col md:flex-col flex-row lg:gap-6 md:gap-6 gap-2 lg:text-5xl md:text-5xl text-lg font-semibold  cursor-pointer">
             <div
               onClick={() => toggleTab(1)}
               className={
                 tab === 1
-                  ? "text-[#262626] flex items-center gap-6"
+                  ? "text-[#262626] flex lg:flex-row md:flex-row flex-col items-center lg:gap-6 md:gap-6 gap-2"
                   : "text-[#262626]/60"
               }
             >
@@ -43,7 +43,7 @@ const ArtGallary = () => {
               onClick={() => toggleTab(2)}
               className={
                 tab === 2
-                  ? "text-[#262626] flex items-center gap-6"
+                  ? "text-[#262626] flex lg:flex-row md:flex-row flex-col items-center lg:gap-6 md:gap-6 gap-2"
                   : "text-[#262626]/60"
               }
             >
@@ -53,14 +53,14 @@ const ArtGallary = () => {
                   tab === 2 ? "block text-xl text-[#F47D4C]" : "hidden"
                 }
               >
-                Itms 15
+                Itms15
               </div>
             </div>
             <div
               onClick={() => toggleTab(3)}
               className={
                 tab === 3
-                  ? "text-[#262626] flex items-center gap-6"
+                  ? "text-[#262626] flex lg:flex-row md:flex-row flex-col items-center lg:gap-6 md:gap-6 gap-2"
                   : "text-[#262626]/60"
               }
             >
@@ -77,7 +77,7 @@ const ArtGallary = () => {
               onClick={() => toggleTab(4)}
               className={
                 tab === 4
-                  ? "text-[#262626] flex items-center gap-6"
+                  ? "text-[#262626] flex lg:flex-row md:flex-row flex-col items-center lg:gap-6 md:gap-6 gap-2"
                   : "text-[#262626]/60"
               }
             >
