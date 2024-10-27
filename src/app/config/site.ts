@@ -23,7 +23,7 @@ export const siteConfig = {
     },
     {
       label: "Contact",
-      href: "/e",
+      href: "/contact",
     },
   ],
 };
