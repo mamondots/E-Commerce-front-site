@@ -47,16 +47,16 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 cursor-pointer">
             <div className="hidden lg:block">
               <p>
                 <IoSearchOutline />
               </p>
             </div>
             <div className="flex items-center justify-center gap-3 text-xl font-semibold">
-              <div className="hidden lg:block">
+              <Link href="/login" className="hidden lg:block">
                 <LuUser />
-              </div>
+              </Link>
               <div className="hidden lg:block">
                 <CiHeart />
               </div>
