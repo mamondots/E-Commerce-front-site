@@ -15,7 +15,7 @@ export const siteConfig = {
 
     {
       label: "Products",
-      href: "/c",
+      href: "/products",
     },
     {
       label: "Blogs",

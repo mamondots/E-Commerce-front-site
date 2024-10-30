@@ -3,7 +3,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FaRegHeart } from "react-icons/fa";
 
-import { FiEye } from "react-icons/fi";
+import QuickViewP from "../QuickViewP/QuickViewP";
+import Link from "next/link";
 
 const ProductCard = ({ product }: { product: any }) => {
   const { title, Price, image } = product;
@@ -22,15 +23,18 @@ const ProductCard = ({ product }: { product: any }) => {
               <FaRegHeart />
             </p>
             <p className="hover:text-[#F57D4C] cursor-pointer duration-300">
-              <FiEye />
+              <QuickViewP></QuickViewP>
             </p>
           </div>
         </div>
       </div>
       <div className="text-center mt-4">
-        <h2 className="text-sm font-semibold text-[#262626]/80 uppercase cursor-pointer hover:text-[#F57D4C] duration-300">
+        <Link
+          href="/product"
+          className="text-sm font-semibold text-[#262626]/80 uppercase cursor-pointer hover:text-[#F57D4C] duration-300"
+        >
           {title}
-        </h2>
+        </Link>
         <p className="mt-2 text-[#262626]/60">${Price}.00</p>
       </div>
     </div>

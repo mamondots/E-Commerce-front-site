@@ -15,6 +15,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { GoPlus } from "react-icons/go";
+import TopSearcBar from "../Utilits/TopSearcBar";
+import SideCart from "../Utilits/SideCart";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
@@ -25,6 +27,10 @@ const Navbar = () => {
     setMenu(false);
     console.log("ok");
   };
+
+  const [search, setSearch] = useState(false);
+
+  const [cart, setCart] = useState(false);
   return (
     <div>
       <div className="lg:px-20 md:px-16 sm:px-12 px-10 py-4">
@@ -32,10 +38,10 @@ const Navbar = () => {
 
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-semibold">
+            <Link href="/" className="text-xl font-semibold">
               M<span className="text-[#F47D4C]">_</span>
               <span>Shop</span>
-            </h2>
+            </Link>
           </div>
           <div className="hidden lg:flex">
             <ul className="flex items-center justify-center gap-8">
@@ -48,7 +54,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center justify-center gap-3 cursor-pointer">
-            <div className="hidden lg:block">
+            <div onClick={() => setSearch(true)} className="hidden lg:block">
               <p>
                 <IoSearchOutline />
               </p>
@@ -57,10 +63,10 @@ const Navbar = () => {
               <Link href="/login" className="hidden lg:block">
                 <LuUser />
               </Link>
-              <div className="hidden lg:block">
+              <Link href="/wishlist" className="hidden lg:block">
                 <CiHeart />
-              </div>
-              <div>
+              </Link>
+              <div onClick={() => setCart(true)}>
                 <p>
                   <LiaLuggageCartSolid />
                 </p>
@@ -139,6 +145,22 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {search && (
+        <div className="w-full bg-[#262626]/60 fixed h-screen z-50 top-0">
+          <div className="py-16 bg-[#fff]">
+            <TopSearcBar setSearch={setSearch}></TopSearcBar>
+          </div>
+        </div>
+      )}
+
+      {cart && (
+        <div className="w-full bg-[#262626]/60 fixed h-screen z-50 top-0">
+          <div className="h-screen bg-[#fff] lg:w-1/3 md:w-2/3 sm:w-2/3 w-full absolute right-0">
+            <SideCart setCart={setCart}></SideCart>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
