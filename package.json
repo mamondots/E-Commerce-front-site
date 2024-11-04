@@ -13,6 +13,8 @@
     "@nextui-org/modal": "^2.0.41",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
+    "@nextui-org/tooltip": "^2.0.41",
+    "@svgr/webpack": "^8.1.0",
     "framer-motion": "^11.11.9",
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
