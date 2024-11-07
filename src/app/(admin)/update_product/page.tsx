@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { ChangeEvent, useState } from "react";
+
 import BodyImg from "@/assets/images/body-bg.jpg";
-import { Categories } from "../../../../../public/Categories";
-import Tiptap from "../../Utilits/Tiptap";
-const AddProducts = () => {
+import { Categories } from "../../../../public/Categories";
+import Tiptap from "@/app/component/Utilits/Tiptap";
+import { ChangeEvent, useState } from "react";
+
+const page = () => {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
   const [imagePreviews, setImagePreviews] = useState<string[] | []>([]);
   console.log(imageFiles);
@@ -34,7 +37,9 @@ const AddProducts = () => {
       }}
     >
       <div>
-        <h2 className="font-semibold text-xl">Add Your Products Information</h2>
+        <h2 className="font-semibold text-xl">
+          Update Your Products Information
+        </h2>
         <p className="mt-2 lg:w-2/3 w-full text-[#262626]/80 border-b border-[#262626]/20 pb-6">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto
           laborum libero ex repudiandae vel ut, hic repellendus. Placeat
@@ -110,11 +115,6 @@ const AddProducts = () => {
               <label className="font-semibold text-sm text-[#262626]/70">
                 Product Categories
               </label>
-              {/* <input
-                className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
-                type="text"
-                placeholder="Title.."
-              /> */}
 
               <select className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded">
                 {Categories.map((category) => (
@@ -173,7 +173,7 @@ const AddProducts = () => {
             <input
               className="w-full text-center font-medium text-sm py-3 tracking-wider bg-[#262626] text-[#fff] rounded cursor-pointer hover:bg-[#F47D4C] duration-300"
               type="submit"
-              value="Add Product"
+              value="Update Product"
             />
           </div>
         </form>
@@ -182,4 +182,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
+export default page;

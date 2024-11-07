@@ -1,10 +1,10 @@
-import AddProducts from "@/app/component/AdminPages/AddProducts/AddProducts";
+import AdminHome from "@/app/component/AdminPages/AdminHome/AdminHome";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="bg-[red] w-full">
-      <AddProducts></AddProducts>
+    <div className="w-full">
+      <AdminHome></AdminHome>
     </div>
   );
 };

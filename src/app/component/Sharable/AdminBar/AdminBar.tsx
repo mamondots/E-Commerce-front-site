@@ -15,7 +15,7 @@ const AdminBar = () => {
   };
   return (
     <div
-      className={`bg-[#262626]  h-screen relative ${
+      className={`bg-[#262626] min-h-screen relative ${
         expend ? "lg:w-1/5 md:w-1/5 w-1/6" : "w-1/8"
       }`}
     >
@@ -66,7 +66,7 @@ const AdminBar = () => {
         <ul className="font-normal text-[#fff] px-4 absolute bottom-10 flex flex-col gap-3 w-full">
           <li className="flex items-center justify-between">
             <Link
-              href=""
+              href="/"
               className={`${expend ? "hidden lg:block " : "hidden"}`}
             >
               Home

@@ -1,16 +1,16 @@
 import React from "react";
-import ProducImage from "@/assets/images/ubone-arts-store-product-02-c.webp";
+import UserImage from "@/assets/images/quotes-01.webp";
 import Image from "next/image";
-import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import Link from "next/link";
-import AdminProductView from "../AdminProductView/AdminProductView";
 
-const ManageProducts = () => {
+import { RiDeleteBin6Line } from "react-icons/ri";
+
+import UpdateRole from "../UpdateRole/UpdateRole";
+
+const ManageUser = () => {
   return (
     <div>
       <div>
-        <h2 className="font-semibold text-xl">Manage Your Products</h2>
+        <h2 className="font-semibold text-xl">Manage Users Information</h2>
         <p className="mt-2 lg:w-2/3 w-full text-[#262626]/80 border-b border-[#262626]/20 pb-6">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto
           laborum libero ex repudiandae vel ut, hic repellendus. Placeat
@@ -26,11 +26,11 @@ const ManageProducts = () => {
           </div>
 
           <div>
-            <p>Title</p>
+            <p>Name</p>
           </div>
           <div className="flex items-center lg:gap-12 md:gap-12 gap-4">
-            <p>Price</p>
-            <p>Quintity</p>
+            <p>Role</p>
+            <p>Date</p>
           </div>
           <div>
             <p>Action</p>
@@ -45,7 +45,7 @@ const ManageProducts = () => {
             <div>
               <Image
                 className="rounded"
-                src={ProducImage}
+                src={UserImage}
                 width={50}
                 height={50}
                 alt="ProducImage"
@@ -54,25 +54,17 @@ const ManageProducts = () => {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-[#262626]/70">
-              Street hen cock (30X21)
-            </p>
+            <p className="text-sm font-semibold text-[#262626]/70">Al Mamon</p>
           </div>
 
-          <div className="flex lg:flex-row md:flex-row flex-col items-center lg:gap-16 md:gap-16 gap-2 text-sm font-semibold text-[#262626]/70">
-            <p>$ 20.00</p>
-            <p>12</p>
+          <div className="flex lg:flex-row md:flex-row flex-col items-center lg:gap-12 md:gap-12 gap-2 text-sm font-semibold text-[#262626]/70">
+            <p>User</p>
+            <p>11-06-2024</p>
           </div>
           <div className="flex items-center gap-2 text-sm text-[#262626]/70 cursor-pointer">
             <p>
-              <AdminProductView></AdminProductView>
+              <UpdateRole></UpdateRole>
             </p>
-            <Link
-              href="/update_product"
-              className="p-2 border border-[#262626]/20 hover:bg-[#F47D4C] hover:text-[#fff] duration-300"
-            >
-              <HiOutlinePencilSquare />
-            </Link>
             <p className="p-2 border border-[#262626]/20 hover:bg-[red] hover:text-[#fff] duration-300">
               <RiDeleteBin6Line />
             </p>
@@ -83,4 +75,4 @@ const ManageProducts = () => {
   );
 };
 
-export default ManageProducts;
+export default ManageUser;
