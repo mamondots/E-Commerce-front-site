@@ -10,7 +10,7 @@ import React from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 
-const UpdateRole = () => {
+const UpdateCategory = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const {
@@ -45,18 +45,14 @@ const UpdateRole = () => {
               >
                 <div className="flex flex-col gap-2">
                   <label className="font-semibold text-sm">Update Role</label>
-                  <select
-                    {...register("role", { required: true })}
+                  <input
+                    {...register("category", { required: true })}
                     className="px-2 py-3 border border-[#262626]/20 rounded outline-none"
-                  >
-                    <option className="[#262626]/20" value="user">
-                      User
-                    </option>
-                    <option className="[#262626]/20" value="admin">
-                      Admin
-                    </option>
-                  </select>
-                  {errors.role && (
+                    type="text"
+                    placeholder="update"
+                  />
+
+                  {errors.category && (
                     <span className="text-[#ce4646]">
                       This field is required
                     </span>
@@ -78,4 +74,4 @@ const UpdateRole = () => {
   );
 };
 
-export default UpdateRole;
+export default UpdateCategory;

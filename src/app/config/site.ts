@@ -29,5 +29,9 @@ export const siteConfig = {
       label: "Admin",
       href: "/admin",
     },
+    {
+      label: "User",
+      href: "/user",
+    },
   ],
 };

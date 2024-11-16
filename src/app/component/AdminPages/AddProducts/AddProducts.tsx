@@ -3,7 +3,8 @@
 import React, { ChangeEvent, useState } from "react";
 import BodyImg from "@/assets/images/body-bg.jpg";
 import { Categories } from "../../../../../public/Categories";
-import Tiptap from "../../Utilits/Tiptap";
+
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 const AddProducts = () => {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
   const [imagePreviews, setImagePreviews] = useState<string[] | []>([]);
@@ -23,8 +24,14 @@ const AddProducts = () => {
     }
   };
 
-  const handleForm = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    console.log(data);
   };
   return (
     <div
@@ -43,17 +50,21 @@ const AddProducts = () => {
       </div>
 
       <div className="mt-8 lg:w-2/3 w-full">
-        <form onSubmit={handleForm} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
           <div className="flex lg:flex-row flex-col items-center gap-3">
             <div className="lg:w-2/3 w-full flex flex-col gap-1">
               <label className="font-semibold text-sm text-[#262626]/70">
                 Product Title
               </label>
               <input
+                {...register("title", { required: true })}
                 className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
                 type="text"
                 placeholder="Title.."
               />
+              {errors.title && (
+                <span className="text-[#ce4646]">This field is required</span>
+              )}
             </div>
 
             <div className="lg:w-1/3 w-full flex flex-col gap-1">
@@ -61,10 +72,14 @@ const AddProducts = () => {
                 Product Price
               </label>
               <input
+                {...register("price", { required: true })}
                 className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
                 type="text"
                 placeholder="Price.."
               />
+              {errors.price && (
+                <span className="text-[#ce4646]">price field is required</span>
+              )}
             </div>
           </div>
 
@@ -84,6 +99,9 @@ const AddProducts = () => {
               id="image"
               type="file"
             />
+            {errors.image && (
+              <span className="text-[#ce4646]">image field is required</span>
+            )}
           </div>
 
           <div>
@@ -116,7 +134,10 @@ const AddProducts = () => {
                 placeholder="Title.."
               /> */}
 
-              <select className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded">
+              <select
+                {...register("category", { required: true })}
+                className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
+              >
                 {Categories.map((category) => (
                   <option
                     className="text-[#262626]/70"
@@ -127,6 +148,11 @@ const AddProducts = () => {
                   </option>
                 ))}
               </select>
+              {errors.category && (
+                <span className="text-[#ce4646]">
+                  Category field is required
+                </span>
+              )}
             </div>
 
             <div className="lg:w-1/3 w-full flex flex-col gap-1">
@@ -134,15 +160,37 @@ const AddProducts = () => {
                 Product Rating
               </label>
               <input
+                {...register("rating", { required: true })}
                 className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
                 type="text"
                 placeholder="Rating 1/5.."
               />
+              {errors.rating && (
+                <span className="text-[#ce4646]">Rating field is required</span>
+              )}
             </div>
           </div>
 
-          <div className="px-3 pb-8 bg-transparent border border-[#262626]/25 outline-none rounded">
+          {/* <div className="px-3 pb-8 bg-transparent border border-[#262626]/25 outline-none rounded">
             <Tiptap></Tiptap>
+          </div> */}
+
+          <div className="w-full flex flex-col gap-1">
+            <label className="font-semibold text-sm text-[#262626]/70">
+              Product Description
+            </label>
+            <textarea
+              {...register("description", { required: true })}
+              className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
+              cols="30"
+              rows="6"
+              placeholder="Enter product description.."
+            ></textarea>
+            {errors.description && (
+              <span className="text-[#ce4646]">
+                Description field is required
+              </span>
+            )}
           </div>
 
           <div className="flex lg:flex-row flex-col items-center gap-3">
@@ -151,10 +199,18 @@ const AddProducts = () => {
                 Product Availability
               </label>
 
-              <select className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded">
+              <select
+                {...register("availability", { required: true })}
+                className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
+              >
                 <option value="stock">In Stock</option>
                 <option value="OutStock">Out Stock</option>
               </select>
+              {errors.description && (
+                <span className="text-[#ce4646]">
+                  Availability field is required
+                </span>
+              )}
             </div>
 
             <div className="lg:w-2/3 w-full flex flex-col gap-1">
@@ -162,10 +218,16 @@ const AddProducts = () => {
                 Product Quintity
               </label>
               <input
+                {...register("stock", { required: true })}
                 className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
                 type="text"
                 placeholder="Quintity.."
               />
+              {errors.stock && (
+                <span className="text-[#ce4646]">
+                  Quintity field is required
+                </span>
+              )}
             </div>
           </div>
 
