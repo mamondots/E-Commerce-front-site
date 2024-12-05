@@ -1,5 +1,8 @@
+"use client";
+import { Provider } from "react-redux";
 import AdminBar from "../component/Sharable/AdminBar/AdminBar";
 import BodyImg from "@/assets/images/body-bg.jpg";
+import { store } from "@/redux/app/store";
 export default function AboutLayout({
   children,
 }: {
@@ -14,7 +17,9 @@ export default function AboutLayout({
           backgroundImage: `url(${BodyImg.src})`,
         }}
       >
-        <main>{children}</main>
+        <main>
+          <Provider store={store}>{children}</Provider>
+        </main>
       </div>
     </div>
   );

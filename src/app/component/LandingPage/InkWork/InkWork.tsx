@@ -1,16 +1,18 @@
-"use client";
 import React from "react";
 import bgImg from "@/assets/images/banner-bg.png";
 import BodyImg from "@/assets/images/body-bg.jpg";
 import { MdOutlineMaximize } from "react-icons/md";
-import { products } from "../../../../../public/Products";
+// import { products } from "../../../../../public/Products";
 
 import PersonalInfo from "../PersonalInfo/PersonalInfo";
-import ProductCard from "../../Products/ProductCard/ProductCard";
-import "swiper/css";
-import { SwiperSlide, Swiper } from "swiper/react";
+// import ProductCard from "../../Products/ProductCard/ProductCard";
+
 import ShortInfo from "../ShortInfo/ShortInfo";
-const InkWork = () => {
+import { getInkProducts } from "@/services/InkProducts";
+import InkSlider from "./InkSlider";
+const InkWork = async () => {
+  const { data: products } = await getInkProducts();
+  console.log(products);
   return (
     <div>
       <div
@@ -51,39 +53,10 @@ const InkWork = () => {
           </div>
           {/* Head title end */}
         </div>
-        <div className="mt-12 lg:ml-[78px] lg:px-0 px-8">
-          <Swiper
-            slidesPerView={4}
-            spaceBetween={20}
-            loop={true}
-            breakpoints={{
-              300: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-            }}
-          >
-            {products?.map(
-              (product: { title: React.Key | null | undefined }) => (
-                <SwiperSlide key={product.title} className="">
-                  <ProductCard product={product}></ProductCard>
-                </SwiperSlide>
-              )
-            )}
-          </Swiper>
-        </div>
+
+        {/* slider */}
+        <InkSlider products={products}></InkSlider>
+
         <div className="lg:mt-24 mt-12 lg:px-28 md:px-16 sm:px-12 px-10">
           <ShortInfo></ShortInfo>
         </div>

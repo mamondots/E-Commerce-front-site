@@ -3,12 +3,22 @@
 import React, { ChangeEvent, useState } from "react";
 import BodyImg from "@/assets/images/body-bg.jpg";
 import { Categories } from "../../../../../public/Categories";
+import { toast } from "sonner";
 
+interface ApiError {
+  data: {
+    message: string;
+  };
+}
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useCreateProductMutation } from "@/redux/features/products/productsApi";
+import { useRouter } from "next/navigation";
 const AddProducts = () => {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
   const [imagePreviews, setImagePreviews] = useState<string[] | []>([]);
-  console.log(imageFiles);
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  // console.log(imageFiles);
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     setImageFiles((prev) => [...prev, file]);
@@ -30,9 +40,57 @@ const AddProducts = () => {
     formState: { errors },
   } = useForm();
 
+  const [createProduct] = useCreateProductMutation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
+    setLoading(true);
+    const toastId = toast.loading("product Creating...");
+    const formData = new FormData();
+    const postData = {
+      ...data,
+      images: imageFiles,
+    };
+    formData.append("data", JSON.stringify(postData));
+    imageFiles.forEach((image) => {
+      formData.append("image", image);
+    });
+    try {
+      const result = await createProduct(formData).unwrap();
+      console.log(result);
+      if (result.success) {
+        toast.success("products create", { id: toastId, duration: 1000 });
+      }
+      router.push("/manage_products");
+    } catch (error) {
+      console.log(error);
+      const apiError = error as ApiError;
+      toast.error(apiError?.data?.message || "An error occurred", {
+        id: toastId,
+        duration: 1000,
+      });
+    }
   };
+
+  // const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  //   const formData = new FormData();
+  //   const postData = {
+  //     ...data,
+  //     images: imageFiles,
+  //   };
+
+  //   formData.append("data", JSON.stringify(postData));
+  //   imageFiles.forEach((image) => {
+  //     formData.append("image", image);
+  //   });
+
+  //   try {
+  //     const result = await createProduct(formData).unwrap();
+  //     console.log("Product created successfully:", result);
+  //     // Provide feedback to the user
+  //   } catch (error) {
+  //     console.error("Error creating product:", error);
+  //     // Handle error and provide feedback to the user
+  //   }
+  // };
   return (
     <div
       className="w-full"
@@ -235,7 +293,8 @@ const AddProducts = () => {
             <input
               className="w-full text-center font-medium text-sm py-3 tracking-wider bg-[#262626] text-[#fff] rounded cursor-pointer hover:bg-[#F47D4C] duration-300"
               type="submit"
-              value="Add Product"
+              value={loading ? "Adding Product..." : "Add Product"}
+              disabled={loading}
             />
           </div>
         </form>

@@ -7,7 +7,7 @@ import QuickViewP from "../QuickViewP/QuickViewP";
 import Link from "next/link";
 
 const ProductCard = ({ product }: { product: any }) => {
-  const { title, Price, image } = product;
+  const { title, price, image } = product;
   return (
     <div className="flex flex-col items-center">
       <div className="border-8 border-white relative group">
@@ -35,7 +35,7 @@ const ProductCard = ({ product }: { product: any }) => {
         >
           {title}
         </Link>
-        <p className="mt-2 text-[#262626]/60">${Price}.00</p>
+        <p className="mt-2 text-[#262626]/60">${price}.00</p>
       </div>
     </div>
   );

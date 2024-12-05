@@ -1,16 +1,20 @@
+/* eslint-disable @next/next/no-async-client-component */
 "use client";
 import React from "react";
 import bgImg from "@/assets/images/banner-bg.png";
 import BodyImg from "@/assets/images/body-bg.jpg";
 import { MdOutlineMaximize } from "react-icons/md";
-import { products } from "../../../../../public/Products";
+// import { products } from "../../../../../public/Products";
 
-import ProductCard from "../../Products/ProductCard/ProductCard";
-import "swiper/css";
-import { SwiperSlide, Swiper } from "swiper/react";
+// import ProductCard from "../../Products/ProductCard/ProductCard";
+
 import HurryUp from "../HurryUp/HurryUp";
+import { getStreetProducts } from "@/services/StreetProducts";
+import StreetSlider from "./StreetSlider";
 
-const StreetWork = () => {
+const StreetWork = async () => {
+  const { data: products } = await getStreetProducts();
+  console.log(products);
   return (
     <div
       style={{
@@ -47,40 +51,8 @@ const StreetWork = () => {
           </div>
           {/* Head title end */}
         </div>
-
-        <div className="mt-12 lg:ml-[78px] lg:px-0 px-8">
-          <Swiper
-            slidesPerView={4}
-            spaceBetween={20}
-            loop={true}
-            breakpoints={{
-              300: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-            }}
-          >
-            {products?.map(
-              (product: { title: React.Key | null | undefined }) => (
-                <SwiperSlide key={product.title} className="">
-                  <ProductCard product={product}></ProductCard>
-                </SwiperSlide>
-              )
-            )}
-          </Swiper>
-        </div>
+        {/* slider */}
+        <StreetSlider products={products}></StreetSlider>
       </div>
       <div className="lg:mt-16 mt-12 lg:px-28 md:px-16 sm:px-12 px-10 pb-12">
         <HurryUp></HurryUp>
