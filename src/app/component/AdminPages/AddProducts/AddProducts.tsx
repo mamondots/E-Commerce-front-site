@@ -240,8 +240,8 @@ const AddProducts = () => {
             <textarea
               {...register("description", { required: true })}
               className="px-3 py-2 bg-transparent border border-[#262626]/25 outline-none rounded"
-              cols="30"
-              rows="6"
+              cols={30}
+              rows={6}
               placeholder="Enter product description.."
             ></textarea>
             {errors.description && (

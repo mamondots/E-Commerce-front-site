@@ -1,9 +1,40 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import BodyImg from "@/assets/images/body-bg.jpg";
 import SeactionHead from "@/app/component/Utilits/SeactionHead";
 import Link from "next/link";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useUserLogin } from "@/hooks/auth.hook";
+import { useRouter, useSearchParams } from "next/navigation";
 const page = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const redirect = searchParams.get("redirect");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    handleUserLogin(data);
+  };
+
+  useEffect(() => {
+    if (!isPending && isSuccess) {
+      if (redirect) {
+        router.push(redirect);
+      } else {
+        router.push("/");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPending, isSuccess]);
   return (
     <div
       className="py-20 mt-[-60px]"
@@ -22,16 +53,20 @@ const page = () => {
       </div>
 
       <div className="flex lg:px-96 px-10 flex-col mt-16">
-        <form className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-[#262626]/60">
               Email address
             </label>
             <input
+              {...register("email", { required: true })}
               className="px-4 py-2 border border-[#262626]/40 outline-none bg-transparent"
               type="email"
               placeholder="Email address"
             />
+            {errors.email && (
+              <span className="text-[#ce4646]">This field is required</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-2">
@@ -39,10 +74,14 @@ const page = () => {
               Password
             </label>
             <input
+              {...register("password", { required: true })}
               className="px-4 py-2 border border-[#262626]/40 outline-none bg-transparent"
               type="password"
               placeholder="Password"
             />
+            {errors.password && (
+              <span className="text-[#ce4646]">This field is required</span>
+            )}
           </div>
 
           <div className="flex items-center justify-between">
