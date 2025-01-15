@@ -1,8 +1,25 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+"use client";
 import React from "react";
 import BodyImg from "@/assets/images/body-bg.jpg";
 import ProductDetails from "@/app/component/Products/ProductDetails/ProductDetails";
 import SeactionHead from "@/app/component/Utilits/SeactionHead";
-const page = () => {
+import { useGetProduct } from "@/hooks/products.hook";
+
+interface ProductId {
+  params: {
+    id: string;
+  };
+}
+const page = ({ params }: ProductId) => {
+  // Unwrapping the params object
+  // interface ProductId {
+  //   params: {
+  //     id: string;
+  //   };
+  // }
+  const { data: product } = useGetProduct(params.id);
+  console.log(product);
   return (
     <div
       className="py-20 mt-[-60px]"
@@ -17,7 +34,7 @@ const page = () => {
         ></SeactionHead>
       </div>
       <div>
-        <ProductDetails></ProductDetails>
+        <ProductDetails product={product}></ProductDetails>
       </div>
     </div>
   );

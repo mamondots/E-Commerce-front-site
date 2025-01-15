@@ -8,7 +8,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import ReletiveProducts from "../ReletiveProducts/ReletiveProducts";
 import { products } from "../../../../../public/Products";
 
-const ProductDetails = () => {
+const ProductDetails = ({ product }) => {
   return (
     <div>
       <div className="lg:px-28 md:px-16 sm:px-12 px-10 mt-12">
@@ -17,7 +17,7 @@ const ProductDetails = () => {
             <Image width={500} src={ProductImg} alt="ProductImg"></Image>
           </div>
           <div>
-            <h2 className="text-xl font-semibold">Street hen cock (30X21)</h2>
+            <h2 className="text-xl font-semibold">product.title</h2>
             <div className="mt-4 flex items-center gap-2">
               <div className="flex items-center gap-1 font-bold text-yellow-600">
                 <p>

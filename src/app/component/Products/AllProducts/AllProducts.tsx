@@ -4,10 +4,12 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { IoGridOutline } from "react-icons/io5";
 import GridProducts from "../GridProducts/GridProducts";
 
-import { products } from "../../../../../public/Products";
+// import { products } from "../../../../../public/Products";
 import RowProducts from "../RowProducts/RowProducts";
+import { TProducts } from "@/types";
 
-const AllProducts = () => {
+const AllProducts = ({ products }: { products: TProducts }) => {
+  console.log(products);
   const [view, setView] = useState(false);
   return (
     <div>

@@ -14,7 +14,7 @@ import StreetSlider from "./StreetSlider";
 
 const StreetWork = async () => {
   const { data: products } = await getStreetProducts();
-  console.log(products);
+  // console.log(products);
   return (
     <div
       style={{

@@ -1,3 +1,4 @@
+"use server";
 import envConfig from "@/app/config/envConfig";
 
 export const getInkProducts = async () => {

@@ -25,13 +25,5 @@ export const siteConfig = {
       label: "Contact",
       href: "/contact",
     },
-    {
-      label: "Admin",
-      href: "/admin",
-    },
-    {
-      label: "User",
-      href: "/user",
-    },
   ],
 };

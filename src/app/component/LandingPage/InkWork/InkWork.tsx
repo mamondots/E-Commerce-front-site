@@ -12,7 +12,7 @@ import { getInkProducts } from "@/services/InkProducts";
 import InkSlider from "./InkSlider";
 const InkWork = async () => {
   const { data: products } = await getInkProducts();
-  console.log(products);
+  // console.log(products);
   return (
     <div>
       <div

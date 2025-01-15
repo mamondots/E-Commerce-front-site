@@ -1,9 +1,37 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+"use client";
 import React from "react";
 import BodyImg from "@/assets/images/body-bg.jpg";
 import SeactionHead from "@/app/component/Utilits/SeactionHead";
-import Category from "@/app/component/Products/Category/Category";
+
 import AllProducts from "@/app/component/Products/AllProducts/AllProducts";
+// import { useGetProducts } from "@/hooks/products.hook";
+
+import { useGetProducts } from "@/hooks/products.hook";
+import Category from "@/app/component/Products/Category/Category";
+
 const page = () => {
+  // const [products, setProducts] = useState([]);
+  // const [category, setCategory] = useState("");
+
+  // const fetchProducts = async (category = "") => {
+  //   try {
+  //     const queryParam = category ? `?category=${category}` : "";
+  //     const data = await getProducts(queryParam);
+  //     // const products = data?.products || []; // Assuming the API response contains a 'products' key
+  //     setProducts(data);
+  //   } catch (error) {
+  //     console.error("Error fetching products:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchProducts(category);
+  // }, [category]);
+
+  // console.log(products); // Ensure the log shows valid data
+  const { data: products } = useGetProducts();
+  console.log(products);
   return (
     <div
       className="py-20 mt-[-60px]"
@@ -21,7 +49,7 @@ const page = () => {
             <Category></Category>
           </div>
           <div className="lg:w-3/4 w-full">
-            <AllProducts></AllProducts>
+            <AllProducts products={products} />
           </div>
         </div>
       </div>

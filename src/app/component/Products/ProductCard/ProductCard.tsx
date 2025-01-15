@@ -7,7 +7,7 @@ import QuickViewP from "../QuickViewP/QuickViewP";
 import Link from "next/link";
 
 const ProductCard = ({ product }: { product: any }) => {
-  const { title, price, image } = product;
+  const { title, price, image, _id } = product;
   return (
     <div className="flex flex-col items-center">
       <div className="border-8 border-white relative group">
@@ -18,7 +18,7 @@ const ProductCard = ({ product }: { product: any }) => {
               add to cart
             </button>
           </div>
-          <div className="flex items-center text-xl text-[#262626]/70 justify-center gap-3 absolute bottom-6 left-[40%] text-center">
+          <div className="flex items-center text-xl text-[#262626]/70 justify-center absolute bottom-6 left-[40%] text-center">
             <p className="hover:text-[#F57D4C] cursor-pointer duration-300">
               <FaRegHeart />
             </p>
@@ -30,11 +30,12 @@ const ProductCard = ({ product }: { product: any }) => {
       </div>
       <div className="text-center mt-4">
         <Link
-          href="/product"
+          href={`/products/${_id}`}
           className="text-sm font-semibold text-[#262626]/80 uppercase cursor-pointer hover:text-[#F57D4C] duration-300"
         >
           {title}
         </Link>
+
         <p className="mt-2 text-[#262626]/60">${price}.00</p>
       </div>
     </div>

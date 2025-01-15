@@ -1,23 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Categories } from "../../../../../public/Categories";
+// import { Categories } from "../../../../../public/Categories";
 import { FiEye } from "react-icons/fi";
 import SpecialImage from "@/assets/images/ubone-arts-store-product-01.jpg";
 import OfferImage from "@/assets/images/offer.webp";
 import { FaRegHeart } from "react-icons/fa";
 import Image from "next/image";
+import { useGetCategories } from "@/hooks/products.hook";
+
 const Category = () => {
+  const { data: Categories } = useGetCategories();
   return (
     <div>
       <h2 className="text-lg font-bold">Categories</h2>
 
       <div className="mt-4 flex flex-col gap-2 border-b border-[#262626]/20 pb-8">
-        {Categories.map((category) => (
-          <div key={category.title}>
+        {Categories?.data?.map((category) => (
+          <div key={category.category}>
             <div className="flex items-center justify-between text-sm font-semibold text-[#262626]/60">
               <div className="flex items-center gap-2 cursor-pointer hover:text-[#F57D4C] duration-300">
                 <input type="checkbox" />
-                <p>{category.title}</p>
+                <p>{category.category}</p>
               </div>
               <div>
                 <p>(0)</p>

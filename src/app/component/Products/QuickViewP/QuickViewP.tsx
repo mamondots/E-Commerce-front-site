@@ -11,13 +11,22 @@ import { FiEye } from "react-icons/fi";
 import ProductImg from "@/assets/images/ubone-arts-store-product-01.jpg";
 import Image from "next/image";
 import { FaRegStar } from "react-icons/fa";
+// import { useGetProduct } from "@/hooks/products.hook";
+
+// interface ProductId {
+//   params: {
+//     id: string;
+//   };
+// }
 
 const QuickViewP = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  // const { data: product } = useGetProduct(params.id);
+  // console.log(product);
   return (
     <>
       <Button
-        className="hover:text-[#F57D4C] text-xl  cursor-pointer duration-300 hover:bg-transparent inset-0"
+        className="p-0 m-0 bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent border-none shadow-none text-xl cursor-pointer duration-300 hover:text-[#F57D4C]"
         onPress={onOpen}
       >
         <FiEye />
